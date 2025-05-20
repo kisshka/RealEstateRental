@@ -1,0 +1,81 @@
+﻿@model Real_Estate_Rental_Practic.Models.Owner
+
+@{
+    ViewData["Title"] = "Добавление арендодателя";
+}
+<div class="main-container">
+<div class="items-container">
+<h1>Добавление арендодателя</h1>
+
+    <form asp-action="Create">
+    <div class="item-container">
+        <div class="form-container">
+        <h2>Данные об объекте</h2>
+        <hr/>
+
+              <input type="hidden" asp-for="IdOwner"/>
+            <div class= "inline-form">
+                <label asp-for="Surname" class="control-label">Фамилия</label>
+                <input asp-for="Surname" class="input-form-text" />
+            </div>
+                <span asp-validation-for="Surname" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="Name" class="control-label">Имя</label>
+                <input asp-for="Name" class="input-form-text" />
+            </div>
+                <span asp-validation-for="Name" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="Patronymic" class="control-label">Отчество</label>
+                <input asp-for="Patronymic" class="input-form-text" />
+            </div>
+                <span asp-validation-for="Patronymic" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="PhoneNumber" class="control-label">Номер телефона</label>
+                <input asp-for="PhoneNumber" class="input-form-text" />
+            </div>
+                <span asp-validation-for="PhoneNumber" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="Town" class="control-label">Город</label>
+                <input asp-for="Town" class="input-form-text" />
+            </div>
+                <span asp-validation-for="Town" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="Street" class="control-label">Улица</label>
+                <input asp-for="Street" class="input-form-text" />
+            </div>
+                <span asp-validation-for="Street" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="Home" class="control-label">Дом</label>
+                <input asp-for="Home" class="input-form-text" />
+            </div>
+                <span asp-validation-for="Home" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="Flat" class="control-label">Квартира</label>
+                <input asp-for="Flat" class="input-form-text" />
+            </div>
+                <span asp-validation-for="Flat" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="EmailAddress" class="control-label">E-mail</label>
+                <input asp-for="EmailAddress" class="input-form-text" />
+            </div>
+                <span asp-validation-for="EmailAddress" class="validation-text"></span>
+
+        </div>
+        </div>
+                    <div class ="btn-container-under-page">
+                    <div class= "inline-buttons">
+                        <a asp-action="Index" class="button-main">Отмена</a>
+                        <input type="submit" value="Добавить" class="button-main" />
+                        </div>
+                    </div>
+        </form>
+    </div>
+     </div>

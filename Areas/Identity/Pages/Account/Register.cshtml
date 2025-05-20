@@ -1,0 +1,43 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<div class="main-container">
+
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="register-login-container">
+        <h2>Регистрация</h2>
+        <hr />
+
+            <div asp-validation-summary="ModelOnly" class="validation-text" ></div>
+           
+           <div class="register-block">
+                <label asp-for="Input.Email">E-mail</label>            
+                    <p></p>
+                <input asp-for="Input.Email" class="input-registration-login" autocomplete="username" aria-required="true" />
+            </div>
+                <span asp-validation-for="Input.Email" class="validation-text"></span>
+
+            <div class="register-block">
+                <label asp-for="Input.Password">Пароль</label>
+                    <p></p>
+                <input asp-for="Input.Password" class="input-registration-login" autocomplete="new-password" aria-required="true" />
+            </div>
+                <span asp-validation-for="Input.Password" class="validation-text"></span>
+
+            <div class="register-block">
+                <label asp-for="Input.ConfirmPassword">Подтверждение пароля</label>
+                    <p></p>
+                <input asp-for="Input.ConfirmPassword" class="input-registration-login" autocomplete="new-password" aria-required="true"  />
+            </div class="register-block">
+                <span asp-validation-for="Input.ConfirmPassword" class="validation-text"></span>
+                    <p></p>
+            <button id="registerSubmit" type="submit"  class="button-register">Зарегистрироваться</button>
+        
+        </form>
+</div>
+
+@* @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} *@

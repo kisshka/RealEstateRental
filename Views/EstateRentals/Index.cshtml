@@ -1,0 +1,133 @@
+﻿@model IEnumerable<EstateRental>
+
+@{
+    ViewData["Title"] = "Аренда";
+}
+
+<div class="main-container">
+
+<h1>Аренда</h1>
+
+<div class="items-container">
+     @if(User.IsInRole("Admin"))
+    {  
+    <div class="btn-create">
+    <a asp-action="Create" class="button-main">Добавить</a>
+    </div>
+    }
+
+@foreach (var item in Model) {
+         @if(User.IsInRole("Admin"))
+    {
+    <a asp-action="Edit" asp-route-id="@item.IdEstateRental" title="Редактировать">
+        <div class="item-container">
+             <div class="item-content">
+                <h2>
+                    @Html.DisplayFor(modelItem => item.IdEstateObjectNavigation.ObjectType)
+                </h2>
+                
+                <p>
+                Начало:
+                @Html.DisplayFor(modelItem => item.RentBeginning)
+                </p>
+                <p>
+                Окончание:
+                @if(item.RentEnding != null)
+                {
+                    @Html.DisplayFor(modelItem => item.RentEnding)
+                }
+                else {
+                    <span>-</span>
+                }
+                </p>
+
+            <p>
+            Стоимость за месяц:
+            @Html.DisplayFor(modelItem => item.CostPerMonth) руб.
+            </p>
+
+            <p>
+            Первоначальное вложение:
+            @Html.DisplayFor(modelItem => item.Deposit) руб.
+            </p>
+            @if(item.IdRealtor != null) {
+            <p>
+            Риелтор:
+                @Html.DisplayFor(modelItem => item.IdRealtorNavigation.Surname)
+                @Html.DisplayFor(modelItem => item.IdRealtorNavigation.Name)
+                @Html.DisplayFor(modelItem => item.IdRealtorNavigation.Patronymic)
+            </p>
+            }
+
+  </div>
+<div class="btn-container">
+                <div class="p">
+                <h4>
+                @Html.DisplayFor(modelItem => item.IdUserNavigation.Surname)
+                @Html.DisplayFor(modelItem => item.IdUserNavigation.Name)
+                @Html.DisplayFor(modelItem => item.IdUserNavigation.Patronymic)
+                </h4>
+
+            </div>
+        </div>
+    </div>
+    </a>
+    }
+    else
+    {
+        <div class="item-container">
+             <div class="item-content">
+                <h2>
+                    @Html.DisplayFor(modelItem => item.IdEstateObjectNavigation.ObjectType)
+                </h2>
+                
+                <p>
+                Начало:
+                @Html.DisplayFor(modelItem => item.RentBeginning)
+                </p>
+                <p>
+                Окончание:
+                @if(item.RentEnding != null)
+                {
+                    @Html.DisplayFor(modelItem => item.RentEnding)
+                }
+                else {
+                    <span>-</span>
+                }
+                </p>
+
+            <p>
+            Стоимость за месяц:
+            @Html.DisplayFor(modelItem => item.CostPerMonth) руб.
+            </p>
+
+            <p>
+            Первоначальное вложение:
+            @Html.DisplayFor(modelItem => item.Deposit) руб.
+            </p>
+            @if(item.IdRealtor != null) {
+            <p>
+            Риелтор:
+                @Html.DisplayFor(modelItem => item.IdRealtorNavigation.Surname)
+                @Html.DisplayFor(modelItem => item.IdRealtorNavigation.Name)
+                @Html.DisplayFor(modelItem => item.IdRealtorNavigation.Patronymic)
+            </p>
+            }
+
+    </div>
+        <div class="btn-container">
+                <div class="p">
+                <h4>
+                @Html.DisplayFor(modelItem => item.IdUserNavigation.Surname)
+                @Html.DisplayFor(modelItem => item.IdUserNavigation.Name)
+                @Html.DisplayFor(modelItem => item.IdUserNavigation.Patronymic)
+                </h4>
+
+            </div>
+        </div>
+    </div>
+    }
+}
+
+</div>
+</div>

@@ -1,0 +1,66 @@
+﻿@model Real_Estate_Rental_Practic.Models.EstateObject
+
+@{
+    ViewData["Title"] = "Удаление объекта недвижимости";
+}
+<div class="main-container">
+<div class="items-container">
+<h1>Удаление объекта недвижимости</h1>
+
+<h3>Вы уверены, что хотите удалить объект?</h3>
+    <div class="item-container">
+    <div class="form-container">
+    <h2>Данные об объекте</h2>
+    <hr />
+
+        <label>Тип объекта: 
+            @Html.DisplayFor(model => model.ObjectType)
+        </label>
+        <label>Адрес:
+           г. @Html.DisplayFor(model => model.Town)
+            ул. @Html.DisplayFor(model => model.Street)
+            дом @Html.DisplayFor(model => model.Home)
+            кв. @Html.DisplayFor(model => model.Flat)
+        </label>
+        <label>Район
+            @Html.DisplayFor(model => model.CittyArea)
+        </label>
+        <label>Количество комнат:
+            @Html.DisplayFor(model => model.NumberOfRooms)
+        </label>
+        <label>Площадь:
+            @Html.DisplayFor(model => model.Square)
+        </label>
+
+        <label>Минимальный срок аренды:
+            @Html.DisplayFor(model => model.RentalPeriod)
+        </label>
+
+<label class="form-check-label">Разрешено с детьми
+            @Html.DisplayFor(model => model.ChildrenAllowed)
+</label>
+
+ <label class="form-check-label">Разрешено с животными
+            @Html.DisplayFor(model => model.AnimalsAllowed)
+</label>
+<label>
+    Арендодатель:
+          @Html.DisplayFor(model => model.IdOwnerNavigation.Surname)
+            @Html.DisplayFor(model => model.IdOwnerNavigation.Name)
+              @Html.DisplayFor(model => model.IdOwnerNavigation.Patronymic)
+</label>
+
+</div>
+</div>
+        <div class ="btn-container-under-page">
+            <div class= "inline-buttons">
+                <form asp-action="Delete">
+                    <a asp-action="Edit" asp-route-id="@Model.IdEstateObject" class="button-main">Отмена</a>
+                    <input type="hidden" asp-for="IdEstateObject" />
+                    <input type="submit" value="Удалить" class="button-delete" />
+                </form>
+            </div>
+        </div>
+
+</div>
+</div>

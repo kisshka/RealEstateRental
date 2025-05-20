@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Real_Estate_Rental_Practic.Models.Realtor>
+
+@{
+    ViewData["Title"] = "Риелторы";
+}
+<div class="main-container">
+<h1>Риелторы</h1>
+<div class="items-container">
+
+     @if(User.IsInRole("Admin") || User.IsInRole("AgencyManager"))
+    {
+        <div class="btn-create">
+        <a asp-action="Create" class="button-main">Добавить</a>
+        </div>
+    }
+
+@foreach (var item in Model) {
+     @if(User.IsInRole("Admin") || User.IsInRole("AgencyManager"))
+    {    
+        <a asp-action="Edit" asp-route-id="@item.IdRealtor"  title="Редактировать">
+            <div class="item-container">
+            <div class="item-content">
+            <h2>
+                @Html.DisplayFor(modelItem => item.Surname)
+                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Patronymic)
+            </h2>
+            <p>
+            Агентство: @Html.DisplayFor(modelItem => item.IdEstateAgencyNavigation.AgencyName)
+            </p>
+            <p>
+             E-mail:  @Html.Raw(item.EmailAddress)   
+            </p>
+        </div>
+
+            <div class="btn-container">
+                <div class="p">
+                    <h4>
+                    <span> +@Html.DisplayFor(modelItem => item.PhoneNumber)  </span>
+                    </h4>
+                </div>
+            </div>
+
+        </div>
+        </a> 
+    }
+    else 
+    {
+        <div class="item-container">
+            <div class="item-content">
+            <h2>
+                @Html.DisplayFor(modelItem => item.Surname)
+                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Patronymic)
+            </h2>
+            <p>
+            Агентство: @Html.DisplayFor(modelItem => item.IdEstateAgencyNavigation.AgencyName)
+            </p>
+            <p>
+            E-mail:    @Html.DisplayFor(modelItem => item.EmailAddress)
+            </p>
+        </div>
+
+            <div class="btn-container">
+                <div class="p">
+                    <h4>
+                    <span> +@Html.DisplayFor(modelItem => item.PhoneNumber)  </span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    }
+}
+</div>
+</div>

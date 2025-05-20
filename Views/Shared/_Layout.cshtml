@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Аренда Недвижимости</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+     <link rel="stylesheet" href="~/css/menu.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Real_Estate_Rental_Practic.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+                <div id="registration-menu">
+                    <ul>
+                    @if (!User.Identity.IsAuthenticated)
+                       {
+                        <li class="registration-menu-element">
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+                        </li>
+                        <li class="registration-menu-element">
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Войти</a>
+                        </li>
+                       }
+                       else {
+                        <li class="registration-menu-element">
+                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                <button type="submit" class="nav-link btn btn-link text-dark">Выйти</button>
+                            </form>
+                        </li>
+                       }
+                    </ul>
+                </div>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <nav id="menu-container">
+                <ul>
+                    
+
+                        <li class="menu-element">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="EstateObjects" asp-action="Index">Недвижимость</a>
+                        </li>
+
+                        <li class="menu-element">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="EstateAgencies" asp-action="Index">Агентства</a>
+                        </li>
+
+                    @if(User.IsInRole("Admin") || User.IsInRole("AgencyManager"))
+                    {                    
+                        <li class="menu-element">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="EstateRentals" asp-action="Index">Аренда</a>
+                        </li>
+                    }
+                    @if(User.IsInRole("Admin"))
+                    {                         
+                        <li class="menu-element">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Owners" asp-action="Index">Арендодатели</a>
+                        </li>
+                    }
+                        <li class="menu-element">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Realtors" asp-action="Index">Риелторы</a>
+                        </li>
+                    @if(User.IsInRole("Admin"))
+                    {                    
+                        <li class="menu-element">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Арендаторы</a>
+                        </li>
+                    }
+
+                </ul>
+            </nav>
+        }
+    </header>
+    
+    <div class="container1">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

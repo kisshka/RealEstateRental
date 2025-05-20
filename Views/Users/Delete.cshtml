@@ -1,0 +1,44 @@
+﻿@model Real_Estate_Rental_Practic.Models.User
+
+@{
+    ViewData["Title"] = "Удаление арендатора";
+}
+
+<div class="main-container">
+<div class="items-container">
+<h1>Удаление арендатора</h1>
+
+<h3>Вы уверены, что хотите удалить объект?</h3>
+    <div class="item-container">
+    <div class="form-container">
+    <h2>Данные об объекте</h2>
+    <hr />
+
+        <label> ФИО:
+            @Html.DisplayFor(model => model.Surname)
+            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Patronymic)
+        </label>
+
+        <label> Номер телефона:
+            +@Html.DisplayFor(model => model.PhoneNumber)
+        </label>
+
+        <label> E-mail:
+            @Html.DisplayFor(model => model.EmailAddress)
+        </label>
+        <p></p>
+</div>
+</div>
+        <div class ="btn-container-under-page">
+            <div class= "inline-buttons">
+                <form asp-action="Delete">
+                    <a asp-action="Edit" asp-route-id="@Model.IdUser" class="button-main">Отмена</a>
+                    <input type="hidden" asp-for="IdUser" />
+                    <input type="submit" value="Удалить" class="button-delete" />
+                </form>
+            </div>
+        </div>
+
+</div>
+</div>

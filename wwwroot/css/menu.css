@@ -1,0 +1,68 @@
+#menu-container{
+    height: 90%;
+    width: 210px;
+    background-color: rgb(181,213,202); 
+    padding: 5px;
+    border-radius: 5px;
+    list-style-type: none; 
+    position: fixed;
+    float: left;
+    margin-right: 10px;
+    margin-top: 15px;
+    border: 2px solid rgb(25, 50, 63);
+}
+
+#menu-container ul {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0;
+}
+
+.menu-element{
+    display: block;
+    margin: 0px 0px;
+    border-radius: 5px;
+    padding: 5px 0px;
+}
+
+.menu-element a {
+    text-decoration: none; 
+    color: rgb(255, 255, 255);
+    font-size: 16pt;
+}
+
+.menu-element:hover,.registration-menu-element:hover{
+    background-color: rgb(209,238,252);
+}
+#registration-menu{
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(181,213,202); 
+    height: 60px;
+    margin: 1px;
+    position: fixed;
+    border: 2px solid rgb(25, 50, 63);
+    border-radius: 5px;
+}
+#registration-menu ul{
+    list-style-type: none;
+    width: 100%;
+    }
+
+.registration-menu-element{
+    list-style-type: none;
+    display: inline;
+    margin-right: 20px;
+    margin-top: 7px;
+    text-align: right;
+    float: right;
+    font-size: 12pt;
+    border-radius: 5px;
+}
+
+.container1{
+    width: 82%;
+    margin-left: 230px;
+    margin-top: 50px;
+  }

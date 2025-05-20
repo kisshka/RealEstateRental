@@ -1,0 +1,98 @@
+﻿@model Real_Estate_Rental_Practic.Models.EstateObject
+
+@{
+    ViewData["Title"] = "Изменение объекта недвижимости";
+}
+<div class="main-container">
+<div class="items-container">
+<h1>Изменение объекта недвижимости</h1>
+        <form asp-action="Edit">
+        <div class="item-container">
+        <div class="form-container">
+        <h2>Данные об объекте</h2>
+        <hr/>
+            <input type="hidden" asp-for="IdEstateObject" />
+            <div class= "inline-form">
+                <label asp-for="ObjectType">Тип объекта</label>
+                <input asp-for="ObjectType" class="input-form-text"/>
+            </div>
+                <span asp-validation-for="ObjectType" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="Town">Город</label>
+                <input asp-for="Town" class="input-form-text"/>
+            </div>
+                <span asp-validation-for="Town" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="Street">Улица</label>
+                <input asp-for="Street" class="input-form-text"/>
+            </div>
+                <span asp-validation-for="Street" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="Home">Дом</label>
+                <input asp-for="Home" class="input-form-text"/>
+             </div>
+                <span asp-validation-for="Home" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="Flat">Квартира</label>
+                <input asp-for="Flat" class="input-form-text"/>
+            </div>
+                <span asp-validation-for="Flat" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="CittyArea">Район</label>
+                <input asp-for="CittyArea" class="input-form-text"/>
+            </div>
+                <span asp-validation-for="CittyArea" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="NumberOfRooms">Количество комнат</label>
+                <input asp-for="NumberOfRooms" class="input-form-text"/>
+             </div>
+                <span asp-validation-for="NumberOfRooms" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="Square">Площадь</label>
+                <input type="number" step="any" asp-for="Square" class="input-form-text"/>
+            </div>
+                <span asp-validation-for="Square" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="RentalPeriod">Минимальный срок аренды</label>
+                <input asp-for="RentalPeriod" class="input-form-text"/>
+            </div>
+                <span asp-validation-for="RentalPeriod" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="IdOwner"></label>
+                <select asp-for="IdOwner" asp-items="ViewBag.IdOwner"></select>
+            </div>
+                <span asp-validation-for="IdOwner" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label class="form-check-label">Разрешено с детьми
+                <input asp-for="ChildrenAllowed" />
+                </label>
+            </div>
+
+            <div class= "inline-form">
+                 <label class="form-check-label">Разрешено с животными
+                <input asp-for="AnimalsAllowed" />
+                </label>
+            </div>
+        </div>
+     </div>
+        <div class ="btn-container-under-page">
+                <div class= "inline-buttons">
+                <a asp-action="Index" class="button-main">Отмена</a>
+                <input type="submit" value="Сохранить" class="button-main" />
+                <a asp-action="Delete" class="button-delete" asp-route-id="@Model.IdEstateObject">Удалить</a>
+                </div>
+        </div>
+        </form>
+
+ </div>
+ </div>

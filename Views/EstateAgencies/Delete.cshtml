@@ -1,0 +1,52 @@
+﻿@model Real_Estate_Rental_Practic.Models.EstateAgency
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="main-container">
+<div class="items-container">
+<h1>Удаление объекта недвижимости</h1>
+
+<h3>Вы уверены, что хотите удалить объект?</h3>
+    <div class="item-container">
+    <div class="form-container">
+    <h2>Данные об объекте</h2>
+    <hr />
+   
+        <label>Название агентства:
+            @Html.DisplayFor(model => model.AgencyName)
+        </label>
+        <label>Номер телефона:
+            +@Html.DisplayFor(model => model.PhoneNumber)
+        </label>
+        <label>Директор:
+            @Html.DisplayFor(model => model.DirectorSurname)
+            @Html.DisplayFor(model => model.DirectorName)
+            @Html.DisplayFor(model => model.DirectorPatronymic)
+        </label>
+        <label>Адрес:
+           г. @Html.DisplayFor(model => model.Town)
+            ул. @Html.DisplayFor(model => model.Street)
+            дом @Html.DisplayFor(model => model.Home)
+            кв. @Html.DisplayFor(model => model.Flat)
+        </label>
+        <label>
+        Комиссия:
+            @Html.DisplayFor(model => model.Comission)
+        </label>
+        <p></p>
+</div>
+</div>
+        <div class ="btn-container-under-page">
+            <div class= "inline-buttons">
+                <form asp-action="Delete">
+                    <a asp-action="Edit" asp-route-id="@Model.IdEstateAgency" class="button-main">Отмена</a>
+                    <input type="hidden" asp-for="IdEstateAgency" />
+                    <input type="submit" value="Удалить" class="button-delete" />
+                </form>
+            </div>
+        </div>
+
+</div>
+</div>

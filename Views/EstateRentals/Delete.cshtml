@@ -1,0 +1,57 @@
+﻿@model Real_Estate_Rental_Practic.Models.EstateRental
+
+@{
+    ViewData["Title"] = "Удаление аренды";
+}
+
+<div class="main-container">
+<div class="items-container">
+<h1>Удаление аренды</h1>
+
+<h3>Вы уверены, что хотите удалить объект?</h3>
+    <div class="item-container">
+    <div class="form-container">
+    <h2>Данные об объекте</h2>
+    <hr />
+
+        <label>Тип объекта: 
+           @Html.DisplayFor(model => model.IdEstateObjectNavigation.ObjectType)
+        </label>
+        <label>Начало аренды: 
+            @Html.DisplayFor(model => model.RentBeginning)
+        </label>Окончание аренды:
+            @Html.DisplayFor(model => model.RentEnding)
+        <label>Стоимость за месяц:
+            @Html.DisplayFor(model => model.CostPerMonth)
+        </label>
+        <label>Первоначальное вложение:  
+            @Html.DisplayFor(model => model.Deposit)
+        </label>
+        @if(Model.IdRealtor != null){
+        <label>Риелтор:
+            @Html.DisplayFor(model => model.IdRealtorNavigation.Surname)
+            @Html.DisplayFor(model => model.IdRealtorNavigation.Name)
+            @Html.DisplayFor(model => model.IdRealtorNavigation.Patronymic)
+        </label>
+        }
+        <label>
+            Арендатор:
+            @Html.DisplayFor(model => model.IdUserNavigation.Surname)
+            @Html.DisplayFor(model => model.IdUserNavigation.Name)
+            @Html.DisplayFor(model => model.IdUserNavigation.Patronymic)
+        </label>
+
+</div>
+</div>
+        <div class ="btn-container-under-page">
+            <div class= "inline-buttons">
+                <form asp-action="Delete">
+                    <a asp-action="Edit" asp-route-id="@Model.IdEstateObject" class="button-main">Отмена</a>
+                    <input type="hidden" asp-for="IdEstateObject" />
+                    <input type="submit" value="Удалить" class="button-delete" />
+                </form>
+            </div>
+        </div>
+
+</div>
+</div>

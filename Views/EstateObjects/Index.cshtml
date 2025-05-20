@@ -1,0 +1,164 @@
+﻿@model IEnumerable<EstateObject>
+
+@{
+    ViewData["Title"] = "Недвижимость";
+}
+
+<div class="main-container">
+
+<h1>Недвижимость</h1>
+
+<div class="items-container">
+
+@if(User.IsInRole("Admin"))
+    {  
+    <div class="btn-create">
+        <a asp-action="Create" class="button-main">Добавить</a>
+    </div>
+    }
+
+    @foreach (var item in Model)
+    {
+        @if(User.IsInRole("Admin"))
+        { 
+    <a asp-action="Edit" asp-route-id="@item.IdEstateObject"  title="Редактировать">
+        <div class="item-container">
+             <div class="item-content">
+                <h2>@Html.DisplayFor(modelItem => item.ObjectType)</h2>
+
+                <p> 
+                   Адрес: г. @Html.DisplayFor(modelItem => item.Town)
+
+                    ул. @Html.DisplayFor(modelItem => item.Street)
+
+                    дом @Html.DisplayFor(modelItem => item.Home)
+                @if (item.Flat != null) {
+                  <span> кв. </span>
+                }
+
+                @Html.DisplayFor(modelItem => item.Flat)
+                 </p>
+                <p>
+                Район:  @Html.DisplayFor(modelItem => item.CittyArea)
+                </p>
+                <p>
+                </p>
+                <p>
+                Площадь:  @Html.DisplayFor(modelItem => item.Square) кв.м,
+                кол-во комнат:   @Html.DisplayFor(modelItem => item.NumberOfRooms)
+                </p>
+                <p>
+                Минимальный период аренды:
+                    @Html.DisplayFor(modelItem => item.RentalPeriod) д.
+                </p>
+
+                <p>
+                Особые разрешения:
+
+                @if(item.ChildrenAllowed == true)
+                {
+                    <span>
+                        ✓Можно с детьми
+                    </span>
+                }
+                @if(item.AnimalsAllowed == true)
+                {
+                <span>
+                    ✓Можно с животными
+                </span>
+                }
+                 @if(item.AnimalsAllowed == false && item.ChildrenAllowed == false)
+                {
+                <span>
+                   -
+                </span>
+                }
+                </p>
+                </div>
+
+                <div class="btn-container">
+                 <div class="p">
+                    <h3>
+                        <span>
+                            +@Html.DisplayFor(modelItem => item.IdOwnerNavigation.PhoneNumber)
+                        </span>
+                    </h3>
+                     </div>
+                </div>
+                
+            </div>
+        </a>
+        }
+        else
+        {
+            <div class="item-container">
+             <div class="item-content">
+                <h2>@Html.DisplayFor(modelItem => item.ObjectType)</h2>
+
+                <p> 
+                   Адрес: г. @Html.DisplayFor(modelItem => item.Town)
+
+                    ул. @Html.DisplayFor(modelItem => item.Street)
+
+                    дом @Html.DisplayFor(modelItem => item.Home)
+                @if (item.Flat != null) {
+                  <span> кв. </span> 
+                }
+
+                @Html.DisplayFor(modelItem => item.Flat)
+                 </p>
+                <p>
+                Район:  @Html.DisplayFor(modelItem => item.CittyArea)
+                </p>
+                <p>
+              
+                </p>
+                
+                <p>
+                Площадь:  @Html.DisplayFor(modelItem => item.Square) кв.м,
+                кол-во комнат:   @Html.DisplayFor(modelItem => item.NumberOfRooms)
+                </p>
+                <p>
+                Минимальный период аренды:
+                    @Html.DisplayFor(modelItem => item.RentalPeriod) д.
+                </p>
+
+                <p>
+                Особые разрешения:
+
+                @if(item.ChildrenAllowed == true)
+                {
+                    <span>
+                        ✓Можно с детьми
+                    </span>
+                }
+                @if(item.AnimalsAllowed == true)
+                {
+                <span>
+                    ✓Можно с животными
+                </span>
+                }
+                 @if(item.AnimalsAllowed == false && item.ChildrenAllowed == false)
+                {
+                <span>
+                   -
+                </span>
+                }
+                </p>
+                </div>
+
+                <div class="btn-container">
+                 <div class="p">
+                    <h3>
+                        <span>
+                            +@Html.DisplayFor(modelItem => item.IdOwnerNavigation.PhoneNumber)
+                        </span>
+                    </h3>
+                     </div>
+                </div>   
+            </div>
+        }
+    }
+</div>
+</div>
+

@@ -1,0 +1,43 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Вход";
+}
+<div class="main-container">
+
+
+    <form id="account" method="post" class="register-login-container">
+        <h2>Вход</h2>
+        <hr />
+
+          <div asp-validation-summary="ModelOnly" class="validation-text" style="list-style-type: none;"></div>
+                <div>
+                    <label asp-for="Input.Email">E-mail</label>
+                    <p></p>
+                    <input asp-for="Input.Email" class="input-registration-login" autocomplete="username" aria-required="true" />
+                </div>
+                    <span asp-validation-for="Input.Email"  class="validation-text"></span>
+
+                <div>
+                    <label asp-for="Input.Password">Пароль</label>
+                    <p></p>
+                    <input asp-for="Input.Password" class="input-registration-login" autocomplete="current-password" aria-required="true"/>
+                </div>
+                    <span asp-validation-for="Input.Password"  class="validation-text"></span>
+
+                <p></p>
+                <div>
+                    <label asp-for="Input.RememberMe">
+                        Запомнить меня
+                    <input asp-for="Input.RememberMe" />
+                    </label>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="button-main">Войти</button>
+                </div>
+            </form>
+</div>
+@* @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} *@

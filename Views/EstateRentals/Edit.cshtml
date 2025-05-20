@@ -1,0 +1,72 @@
+﻿@model Real_Estate_Rental_Practic.Models.EstateRental
+
+@{
+    ViewData["Title"] = "Изменение аренды";
+}
+
+<div class="main-container">
+<div class="items-container">
+<h1>Изменение аренды</h1>
+
+    <form asp-action="Edit">
+        <div class="item-container">
+        <div class="form-container">
+        <h2>Данные об объекте</h2>
+        <hr />
+
+            <input type="hidden" asp-for="IdEstateRental" />
+
+            <div class= "inline-form">
+                <label asp-for="RentBeginning">Начало аренды</label>
+                <input type="date" asp-for="RentBeginning"  class="input-form-text" />
+            </div>
+                    <span asp-validation-for="RentBeginning" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="RentEnding">Окончание аренды</label>
+                <input type="date" asp-for="RentEnding"  class="input-form-text" />
+            </div>
+                    <span asp-validation-for="RentEnding" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="CostPerMonth" class="control-label">Стоимость за месяц</label>
+                <input  type="number" step="any" asp-for="CostPerMonth" class="input-form-text"/>
+            </div>
+                    <span asp-validation-for="CostPerMonth"  class="validation-text"  ></span>
+
+            <div class= "inline-form">
+                <label asp-for="Deposit" class="control-label"> Первоначальное вложение</label>
+                <input type="number" step="any" asp-for="Deposit"  class="input-form-text" />
+            </div>
+                    <span asp-validation-for="Deposit" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="IdEstateObject" class="control-label"></label>
+                <select asp-for="IdEstateObject"  class="input-form-text" asp-items="ViewBag.IdEstateObject"></select>
+            </div>
+                    <span asp-validation-for="IdEstateObject" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="IdRealtor" class="control-label"></label>
+                <select asp-for="IdRealtor"  class="input-form-text" asp-items="ViewBag.IdRealtor"></select>
+            </div>
+                    <span asp-validation-for="IdRealtor" class="validation-text"></span>
+
+            <div class= "inline-form">
+                <label asp-for="IdUser" class="control-label"></label>
+                <select asp-for="IdUser"  class="input-form-text" asp-items="ViewBag.IdUser"></select>
+            </div>
+                    <span asp-validation-for="IdUser" class="validation-text"></span>
+
+        </div>
+        </div> 
+                    <div class ="btn-container-under-page">
+                        <div class= "inline-buttons">
+                            <a asp-action="Index" class="button-main">Отмена</a>
+                            <input type="submit" value="Сохранить" class="button-main" />
+                            <a asp-action="Delete" class="button-delete" asp-route-id="@Model.IdEstateRental">Удалить</a>
+                        </div>
+                    </div>
+        </form>
+</div>
+</div>

@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Real_Estate_Rental_Practic.Models.EstateAgency>
+
+@{
+    ViewData["Title"] = "Агентства";
+}
+
+<div class="main-container">
+<h1>Агентства</h1>
+
+<div class="items-container">
+
+
+        <div class="btn-create">
+        @if(User.IsInRole("Admin") || User.IsInRole("AgencyManager"))
+        {  
+            <a asp-action="Create" class="button-main">Добавить</a>
+        }
+            <a asp-action="Export" class="button-main">Экспорт</a>
+        </div>
+
+@foreach (var item in Model)
+    {
+        @if(User.IsInRole("Admin") || User.IsInRole("AgencyManager"))
+        { 
+         <a asp-action="Edit" asp-route-id="@item.IdEstateAgency"  title="Редактировать">
+          <div class="item-container">
+                <div class="item-content">
+                   <h2>@Html.DisplayFor(modelItem => item.AgencyName)</h2>
+
+                  <p> 
+                   Директор:    
+                    @Html.DisplayFor(modelItem => item.DirectorSurname)
+                    @Html.DisplayFor(modelItem => item.DirectorName)
+                    @Html.DisplayFor(modelItem => item.DirectorPatronymic)
+                  </p>
+                  <p>
+                    Юридический адрес: 
+                     г. @Html.DisplayFor(modelItem => item.Town)
+
+                     ул. @Html.DisplayFor(modelItem => item.Street)
+
+                     дом @Html.DisplayFor(modelItem => item.Home)
+
+                     кв. @Html.DisplayFor(modelItem => item.Flat)
+
+                  </p>
+                <p>
+                    @{
+                        var comission = item.Comission * 100;
+                    }
+                    Комиссия:
+                     @comission %
+                </p>
+                </div>
+
+                <div class="btn-container">
+                <div class="p">
+                <h3>
+                    <span>
+                    +@Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </span>
+                </h3>
+                </div>
+                </div>
+        </div>
+        </a>
+        }
+        
+        else
+        {
+            <div class="item-container">
+                <div class="item-content">
+                   <h2>@Html.DisplayFor(modelItem => item.AgencyName)</h2>
+
+                  <p> 
+                   Директор:    
+                    @Html.DisplayFor(modelItem => item.DirectorSurname)
+                    @Html.DisplayFor(modelItem => item.DirectorName)
+                    @Html.DisplayFor(modelItem => item.DirectorPatronymic)
+                  </p>
+                  <p>
+                    Юридический адрес: 
+                     г. @Html.DisplayFor(modelItem => item.Town)
+
+                     ул. @Html.DisplayFor(modelItem => item.Street)
+
+                     дом @Html.DisplayFor(modelItem => item.Home)
+
+                     кв. @Html.DisplayFor(modelItem => item.Flat)
+
+                  </p>
+                <p>
+                    @{
+                        var comission = item.Comission * 100;
+                    }
+                    Комиссия:
+                     @comission %
+                </p>
+                </div>
+
+                <div class="btn-container">
+                <div class="p">
+                <h3>
+                    <span>
+                    +@Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </span>
+                </h3>
+                </div>
+                </div>
+        </div>
+        }
+    }
+
+</div>
+</div>
